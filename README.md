@@ -19,6 +19,7 @@ A simple Express-based API that uses Google Gemini to parse natural language tra
 ## Setup
 
 1. **Install Dependencies**:
+
    ```bash
    pnpm install
    ```
@@ -34,31 +35,72 @@ A simple Express-based API that uses Google Gemini to parse natural language tra
 ## Usage
 
 ### Development Mode
+
 Runs the application with `esbuild` watching for source changes and `nodemon` restarting the server.
+
 ```bash
 pnpm dev
 ```
 
 ### Production Build
+
 Build the project into the `dist/` directory.
+
 ```bash
 pnpm build
 ```
 
 ### Start Production Server
+
 ```bash
 pnpm start
+```
+
+## Code Quality
+
+Maintain code standards using ESLint and Prettier:
+
+### Linting
+
+Check for code issues and potential bugs:
+
+```bash
+pnpm lint
+```
+
+Automatically fix linting issues:
+
+```bash
+pnpm lint:fix
+```
+
+### Formatting
+
+Check if files are correctly formatted:
+
+```bash
+pnpm format:check
+```
+
+Automatically format all files:
+
+```bash
+pnpm format
 ```
 
 ## API Endpoints
 
 ### `GET /health`
+
 Returns the status of the API.
+
 - **Response**: `200 OK`
 - **Body**: `{ "status": "ok" }`
 
 ### `POST /parseTransaction`
+
 Parses a natural language transaction description.
+
 - **Request Body**:
   ```json
   {

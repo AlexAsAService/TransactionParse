@@ -14,12 +14,13 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-
 app.post('/parseTransaction', async (req, res, next) => {
   try {
     const { description } = req.body;
     if (!description || typeof description !== 'string') {
-      res.status(400).json({ error: { message: 'Missing or invalid "description" in request body' } });
+      res
+        .status(400)
+        .json({ error: { message: 'Missing or invalid "description" in request body' } });
       return;
     }
     const result = await parseTransaction(description);
@@ -30,7 +31,8 @@ app.post('/parseTransaction', async (req, res, next) => {
 });
 
 // JSON Error Handler
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+app.use((err: any, req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
   res.status(err.status || 500).json({
     error: {

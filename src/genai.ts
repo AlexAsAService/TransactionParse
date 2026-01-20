@@ -11,9 +11,18 @@ if (!apiKey) {
 const genAI = new GoogleGenerativeAI(apiKey);
 
 /**
+ * Structured transaction object.
+ */
+export interface Transaction {
+  item: string;
+  amount: number;
+  category: string;
+}
+
+/**
  * Parses a transaction description into a structured JSON object.
  */
-export async function parseTransaction(description: string): Promise<any> {
+export async function parseTransaction(description: string): Promise<Transaction> {
   const modelName = process.env.MODEL_NAME || 'gemini-flash-lite-latest';
 
   // Read system prompt from file
