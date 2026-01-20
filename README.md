@@ -88,6 +88,25 @@ Automatically format all files:
 pnpm format
 ```
 
+```bash
+pnpm format
+```
+
+## CI/CD
+
+This project uses GitHub Actions for automated testing and deployment:
+
+### Pull Requests to `main`
+- Runs linting and build checks.
+- Build a Docker container.
+- Pushes the container to GHCR with a commit hash tag.
+- Runs a health check test against the container.
+
+### Merges to `master`
+- Automatically runs `changeset version` to bump versions.
+- Commits and pushes version changes back to the repository.
+- Builds and pushes the Docker container to GHCR with both a commit hash and a version tag (e.g., `1.0.1`).
+
 ## API Endpoints
 
 ### `GET /health`
