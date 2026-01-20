@@ -1,0 +1,11 @@
+node_modules
+.env
+.git
+.eslint*
+.prettier*
+eslint.config.js
+esbuild.config.js
+tsconfig.json
+src
+Dockerfile
+.dockerignore
